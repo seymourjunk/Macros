@@ -139,7 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Macros.cpp" />
+    <ClCompile Include="sources\Configuration.cpp" />
+    <ClCompile Include="sources\Macros.cpp" />
+    <ClCompile Include="sources\main.cpp" />
+    <ClCompile Include="sources\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\Macros.h" />
+    <ClInclude Include="headers\nlohmann\json.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
