@@ -16,6 +16,7 @@ struct Program {
 	ProgramActionType programActionType;
 };
 
+
 struct Setting {
 	std::wstring name;
 	std::wstring args;
@@ -27,19 +28,4 @@ struct Space {
 	std::vector<Program> programs;
 	std::vector<Setting> settings;
 };
-
-//struct Macros {
-//	MacrosType macrosType;
-//	union {
-//		Program program;
-//		Configuration configuration;
-//	};
-//};
-
-enum class MacrosType {
-	MACROS_PROGRAM,
-	MACROS_CONFIGURATION
-};
-
-
 

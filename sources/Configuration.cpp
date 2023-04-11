@@ -1,9 +1,6 @@
 #include <fstream>
 #include <Windows.h>
-#include "../headers/nlohmann/json.hpp"
 #include "../headers/Macros.h"
-
-using json = nlohmann::json;
 
 
 class Configuration {
@@ -18,34 +15,34 @@ public:
 		}
 		else {
 			ParseConfig();
-			//DeserializationJSONToObject();
+			DeserializationJSONToObject();
 		}
 	}
 
 private:
 	void ParseConfig() {
 		std::ifstream f(path_);
-		json_ = json::parse(f);
+		//json_ = json::parse(f);
 	}
 
 	void CreateEmptyConfig() {
-		json_ = json::parse(R"(
+		/*json_ = json::parse(R"(
 		  {
 		    "user": "user",
 		    "spaces": []
 		  }
-		)");
+		)");*/
 	}
 
 	void SerializationToFile(){
-		std::ofstream o(path_);
+		/*std::ofstream o(path_);
 		o << std::setw(4) << json_ << std::endl;
-		o.close();
+		o.close();*/
 	}
 
-	//Space DeserializationJSONToObject() {
-	//	//space_
-	//}
+	void DeserializationJSONToObject() {
+		//space_ = json_.get<Space>();
+	}
 
 	int IsError()
 	{
@@ -64,7 +61,7 @@ private:
 
 public:
 	std::wstring path_;
-	json json_;
+	//json json_;
 	Space space_;
 
 };

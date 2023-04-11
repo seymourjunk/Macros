@@ -1,6 +1,5 @@
 // Macros.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-#include <Windows.h>
 #include <string>
 #include <iostream>
 #include "Configuration.cpp"
@@ -21,7 +20,7 @@ int main()
 
 
     Configuration config(configPath);
-
+    
     printf(
         "Press C to create space"
     );
