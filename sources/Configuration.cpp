@@ -1,47 +1,67 @@
+#include <iostream>
 #include <fstream>
 #include <Windows.h>
-#include "../headers/Macros.h"
+#include "../headers/Space.h"
+#include "../headers/nlohmann/json.hpp"
 
+using json = nlohmann::json;
 
 class Configuration {
 public:
 	Configuration(std::wstring path) {
 		path_ = path;
-		if ((0xffffffff == GetFileAttributes(path_.c_str())) && IsError())
+		if (!(0xffffffff == GetFileAttributes(path_.c_str())) && !IsError())
 		{
-			printf("The config not found. A new config would be created.");
-			CreateEmptyConfig();
-			SerializationToFile();
-		}
-		else {
 			ParseConfig();
 			DeserializationJSONToObject();
 		}
 	}
 
+
 private:
 	void ParseConfig() {
 		std::ifstream f(path_);
-		//json_ = json::parse(f);
+		json_ = json::parse(f);
+		f.close();
 	}
 
 	void CreateEmptyConfig() {
-		/*json_ = json::parse(R"(
+		json_ = json::parse(R"(
 		  {
-		    "user": "user",
-		    "spaces": []
-		  }
-		)");*/
+  "name": "work",
+  "programs": [
+    {
+      "cmd": "path1",
+      "args": "arguments",
+      "path": "path2",
+      "programActionType": "block"
+    },
+    {
+      "cmd": "path3",
+      "args": "arguments2",
+      "path": "path4",
+      "programActionType": "launch"
+    }
+  ],
+  "settings": [
+    {
+      "name": "name",
+      "args": "arguments",
+      "cmd": "path2"
+    }
+  ]
+}
+		)");
 	}
 
-	void SerializationToFile(){
-		/*std::ofstream o(path_);
-		o << std::setw(4) << json_ << std::endl;
-		o.close();*/
-	}
+	//void SerializationToFile(){
+	//	std::ofstream o(path_);
+	//	o << std::setw(4) << json_ << std::endl;
+	//	o.close();
+	//}
 
 	void DeserializationJSONToObject() {
-		//space_ = json_.get<Space>();
+		space_ = json_;
 	}
 
 	int IsError()
@@ -58,10 +78,8 @@ private:
 		return 0;
 	}
 
-
 public:
 	std::wstring path_;
-	//json json_;
-	Space space_;
-
+	json json_;
+	ns::Space space_;
 };

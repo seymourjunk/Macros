@@ -145,7 +145,9 @@
     <ClCompile Include="sources\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\Macros.h" />
+    <ClInclude Include="Configuration.h" />
+    <ClInclude Include="headers\nlohmann\json.hpp" />
+    <ClInclude Include="headers\Space.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
