@@ -13,10 +13,15 @@ public:
 		if (!(0xffffffff == GetFileAttributes(path_.c_str())) && !IsError())
 		{
 			ParseConfig();
-			DeserializationJSONToObject();
+			//DeserializationJSONToObject();
 		}
 	}
 
+
+	mcrs::Space DeserializationJSONToObject() {
+		mcrs::Space space = json_;
+		return space;
+	}
 
 private:
 	void ParseConfig() {
@@ -60,10 +65,6 @@ private:
 	//	o.close();
 	//}
 
-	void DeserializationJSONToObject() {
-		space_ = json_;
-	}
-
 	int IsError()
 	{
 		if ((GetLastError() == ERROR_FILE_NOT_FOUND) || (GetLastError() == ERROR_PATH_NOT_FOUND) ||
@@ -81,5 +82,5 @@ private:
 public:
 	std::wstring path_;
 	json json_;
-	ns::Space space_;
+	//ns::Space space_;
 };

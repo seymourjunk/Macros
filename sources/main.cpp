@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include "Configuration.cpp"
+#include "../headers/Space.h"
 
 
 std::wstring ExePath() {
@@ -17,10 +18,16 @@ int main()
 {
     std::wstring exePath = ExePath();
     std::wstring configPath = exePath + L"\\config.json";
-
+    mcrs::Space space;
+    
 
     Configuration config(configPath);
-    //Space space
+    if (config.json_ != NULL) {
+        space = config.DeserializationJSONToObject();
+    }
+    else {
+        //create empty config
+    }
     
     printf(
         "Press C to create space"
