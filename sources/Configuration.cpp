@@ -8,7 +8,7 @@ using json = nlohmann::json;
 
 class Configuration {
 public:
-	Configuration(std::wstring path) {
+	Configuration(std::string path) {
 		path_ = path;
 		if (!(0xffffffff == GetFileAttributes(path_.c_str())) && !IsError())
 		{
@@ -80,7 +80,7 @@ private:
 	}
 
 public:
-	std::wstring path_;
+	std::string path_;
 	json json_;
 	//ns::Space space_;
 };

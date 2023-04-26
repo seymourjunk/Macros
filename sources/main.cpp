@@ -6,18 +6,18 @@
 #include "../headers/Space.h"
 
 
-std::wstring ExePath() {
+std::string ExePath() {
     TCHAR buffer[MAX_PATH] = { 0 };
     GetModuleFileName(NULL, buffer, MAX_PATH);
-    std::wstring::size_type pos = std::wstring(buffer).find_last_of(L"\\/");
-    return std::wstring(buffer).substr(0, pos);
+    std::string::size_type pos = std::string(buffer).find_last_of("\\/");
+    return std::string(buffer).substr(0, pos);
 }
 
 
 int main()
 {
-    std::wstring exePath = ExePath();
-    std::wstring configPath = exePath + L"\\config.json";
+    std::string exePath = ExePath();
+    std::string configPath = exePath + "\\config.json";
     mcrs::Space space;
     
 
