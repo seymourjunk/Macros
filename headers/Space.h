@@ -7,7 +7,6 @@
 using json = nlohmann::json;
 
 namespace mcrs {
-
 	struct Program {
 		Program() {};
 
@@ -97,4 +96,5 @@ namespace mcrs {
 		j.at("settings").get_to<std::vector<Setting>>(s.settings_);
 	}
 
+	bool LaunchProgram(Program& program);
 }
