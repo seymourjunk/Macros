@@ -3,6 +3,7 @@
 #include <tuple>
 #include <vector>
 #include "../headers/nlohmann/json.hpp"
+#include <Windows.h>
 
 using json = nlohmann::json;
 
@@ -54,7 +55,6 @@ namespace mcrs {
 		j.at("cmd").get_to(s.cmd_);;
 	}
 
-
 	class Space {
 	public:
 		void SetName(std::string name)
@@ -96,5 +96,9 @@ namespace mcrs {
 		j.at("settings").get_to<std::vector<Setting>>(s.settings_);
 	}
 
+
 	bool LaunchProgram(Program& program);
+	DWORD FindProcessId(std::string& exeName);
+	DWORD CloseProgram(Program& program);
+	void BlockProgram();
 }

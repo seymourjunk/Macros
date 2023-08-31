@@ -29,9 +29,9 @@ int main()
         //create empty config
     }
     
-    printf(
-        "Press C to create space"
-    );
+    //quick check, need delete after test
+    //space.programs_[0].cmd_ = "C:\\windows\\system32\\notepad.exe";
+    //mcrs::CloseProgram(space.programs_[0]);
 
     //printf(
     //    "-c     create space"
